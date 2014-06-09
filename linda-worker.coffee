@@ -7,11 +7,9 @@ config  = require path.resolve 'config.json'
 scripts = require path.resolve 'libs', 'scripts'
 
 config.url = process.env.URL || config.url
-
-console.log config
+debug config
 
 scripts.load (err, codes) ->
-
   socket = socketio.connect config.url
   linda = new LindaClient().connect socket
   linda.config = config
