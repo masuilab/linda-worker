@@ -1,4 +1,7 @@
 {
+  "app": {
+    "url": "https://masuilab-linda-worker.herokuapp.com"
+  },
   "url": "https://node-linda-base.herokuapp.com",
   "spaces": {
     "masuilab": "麻酔研",
