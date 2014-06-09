@@ -11,7 +11,7 @@ module.exports = (linda) ->
       ts.write {type: "skype", cmd: "post", value: "#{msg} (#{value})"}
 
   linda.io.on 'connect', ->
-    linda.debug 'socket.io connect!!'
+
     for ts in tss
       last_value = null
       do (ts, last_value) ->
