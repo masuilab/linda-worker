@@ -1,2 +1,2 @@
 module.exports = (linda) ->
-  console.log "tempe alert loaded"
+  linda.debug "tempe alert loaded"

@@ -10,13 +10,21 @@ httpserver = require path.resolve 'libs', 'httpserver'
 config.url = process.env.URL or config.url
 debug config
 
-scripts.load (err, codes) ->
-  socket = socketio.connect config.url
-  linda = new LindaClient().connect socket
-  linda.config = config
 
-  for code in codes
-    code linda
+## Scripts
+
+scripts.load process.env.SCRIPT or '.+', (err, scripts) ->
+  socket = socketio.connect config.url
+
+  for script in scripts
+    debug "load script \"#{script.name}\""
+    linda = new LindaClient().connect socket
+    linda.config = config
+    linda.debug = require('debug')("linda:worker:#{script.name}")
+    script.function(linda)
+
+
+  linda = new LindaClient().connect socket
 
   linda.io.on 'connect', ->
     debug "socket.io connnect <#{config.url}>"
@@ -24,4 +32,6 @@ scripts.load (err, codes) ->
   linda.io.on 'disconnect', ->
     debug "socket.io disconnect <#{config.url}>"
 
+
+## HTTP Server
 httpserver.start process.env.PORT or 3000
