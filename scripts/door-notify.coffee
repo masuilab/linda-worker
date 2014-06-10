@@ -1,7 +1,8 @@
 module.exports = (linda) ->
 
+  config = linda.config
   tss = []
-  for name, yomi of linda.config.spaces
+  for name, yomi of config.linda.spaces
     tss.push linda.tuplespace(name)
 
   notify = (msg) ->
@@ -18,9 +19,9 @@ module.exports = (linda) ->
           return if err
           linda.debug "#{ts.name}  - #{JSON.stringify tuple}"
           if tuple.data.who?
-            msg = "#{linda.config.spaces[ts.name]}で、#{tuple.data.who}がドアを開きました"
+            msg = "#{config.linda.spaces[ts.name]}で、#{tuple.data.who}がドアを開きました"
           else
-            msg = "#{linda.config.spaces[ts.name]}でドアが開きました"
+            msg = "#{config.linda.spaces[ts.name]}でドアが開きました"
           linda.debug msg
           notify msg
 
@@ -28,8 +29,8 @@ module.exports = (linda) ->
           return if err
           linda.debug "#{ts.name}  - #{JSON.stringify tuple}"
           if tuple.data.who?
-            msg = "#{linda.config.spaces[ts.name]}で、#{tuple.data.who}がドアを閉じました"
+            msg = "#{config.linda.spaces[ts.name]}で、#{tuple.data.who}がドアを閉じました"
           else
-            msg = "#{linda.config.spaces[ts.name]}でドアが閉じました"
+            msg = "#{config.linda.spaces[ts.name]}でドアが閉じました"
           linda.debug msg
           notify msg
