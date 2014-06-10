@@ -12,5 +12,8 @@
       "tau": "タウ",
       "shokai": "しょうかいハウス"
     }
+  },
+  "temperature_alert": {
+    "interval": 1200
   }
 }
