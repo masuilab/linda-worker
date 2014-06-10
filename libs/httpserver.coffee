@@ -11,4 +11,4 @@ app = http.createServer app_handler
 module.exports =
   start: (port) ->
     app.listen port
-    debug "server start #{port}"
+    debug "start - port:#{port}"
