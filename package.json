@@ -1,7 +1,7 @@
 {
   "name": "linda-worker",
   "version": "0.0.0",
-  "description": "",
+  "description": "- deploy on Heroku   - http://masuilab-linda-worker.herokuapp.com",
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/.bin/coffee linda-worker.coffee"
@@ -18,5 +18,16 @@
     "linda": "^1.0.1",
     "lodash": "^2.4.1",
     "socket.io-client": "^1.0.4"
-  }
+  },
+  "devDependencies": {
+    "coffee-script": "^1.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/masuilab/linda-worker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/masuilab/linda-worker/issues"
+  },
+  "homepage": "https://github.com/masuilab/linda-worker"
 }
