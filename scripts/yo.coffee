@@ -12,8 +12,10 @@ module.exports = (linda) ->
     return process.env["YO_#{name.toUpperCase()}"]
 
   yo = (name, callback) ->
+    unless token = getToken(name)
+      return
     request.post "http://api.justyo.co/yoall/", {
-      form: {api_token: getToken(name)}
+      form: {api_token: token}
     }, callback
 
   ts = linda.tuplespace config.linda.space

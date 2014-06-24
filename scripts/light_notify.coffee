@@ -5,10 +5,11 @@ module.exports = (linda) ->
   for name, yomi of config.linda.spaces
     tss.push linda.tuplespace(name)
 
-  notify = (msg, value) ->
+  notify = (msg, value, tuple_space) ->
     ts = linda.tuplespace config.linda.space
     ts.write {type: "slack", cmd: "post", value: "#{msg} (#{value})"}
     ts.write {type: "skype", cmd: "post", value: "#{msg} (#{value})"}
+    ts.write {type: "yo", value: tuple_space.name}
     for ts in tss
       ts.write {type: "say", value: msg}
 
@@ -26,10 +27,10 @@ module.exports = (linda) ->
             if tuple.data.value > last_value
               if tuple.data.value / (last_value+1) > 3
                 linda.debug msg = "#{config.linda.spaces[ts.name]} で電気がつきました"
-                notify msg, tuple.data.value
+                notify msg, tuple.data.value, ts
             else
               if last_value / (tuple.data.value+1) > 3
                 linda.debug msg = "#{config.linda.spaces[ts.name]} で電気が消えました"
-                notify msg, tuple.data.value
+                notify msg, tuple.data.value, ts
           last_value = tuple.data.value
 
