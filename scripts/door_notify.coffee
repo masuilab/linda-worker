@@ -11,6 +11,11 @@ module.exports = (linda) ->
       ts.write {type: "skype", cmd: "post", value: msg}
       ts.write {type: "slack", cmd: "post", value: msg}
 
+  yo = (room_name) ->
+    linda.tuplespace(config.linda.space).write
+      type: "yo"
+      value: room_name
+
   linda.io.on 'connect', ->
 
     for ts in tss
@@ -24,6 +29,7 @@ module.exports = (linda) ->
             msg = "#{config.linda.spaces[ts.name]}でドアが開きました"
           linda.debug msg
           notify msg
+          yo ts.name
 
         ts.watch {type: "door", cmd: "close", response: "success"}, (err, tuple) ->
           return if err
