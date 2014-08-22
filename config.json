@@ -3,7 +3,7 @@
     "url": "https://masuilab-linda-worker.herokuapp.com"
   },
   "linda": {
-    "url": "https://node-linda-base.herokuapp.com",
+    "url": "https://linda-server.herokuapp.com",
     "space": "masuilab",
     "spaces": {
       "masuilab": "増井研",
