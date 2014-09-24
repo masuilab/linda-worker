@@ -12,17 +12,14 @@
   "author": "Sho Hashimoto <hashimoto@shokai.org>",
   "license": "MIT",
   "dependencies": {
-    "async": "^0.9.0",
-    "coffee-script": "^1.7.1",
-    "debug": "^1.0.1",
-    "linda": "^1.1.3",
-    "lodash": "^2.4.1",
-    "request": "^2.36.0",
+    "async": "*",
+    "coffee-script": "^1.8",
+    "debug": "*",
+    "linda": "^1.2",
+    "lodash": "*",
+    "request": "*",
     "slackbot": "0.0.1",
-    "socket.io-client": "^1.0.4"
-  },
-  "devDependencies": {
-    "coffee-script": "^1.7.1"
+    "socket.io-client": "^1.1"
   },
   "repository": {
     "type": "git",
