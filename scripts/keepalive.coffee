@@ -1,11 +1,13 @@
+request = require 'request'
+
 module.exports = (linda) ->
-  url = linda.config.app.url
-  unless /^https?:\/\/.+/.test url
-    linda.debug "ERROR: invalid keepalive URL (#{url})"
-    return
-  linda.debug "start (#{url})"
+
+  return unless /^https?:\/\/.+/.test linda.config.app.url
 
   setInterval ->
-    linda.requestKeepalive url
-  , 90000
-
+    linda.debug 'ping'
+    url = "#{linda.config.app.url}?keepalive=#{Date.now()}"
+    request.head url, (err, res) ->
+      if !err and res.statusCode is 200
+        linda.debug 'pong'
+  , 60 * 1000 * 20  # 20 min
