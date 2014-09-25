@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "0.10"
+notifications:
+  slack:
+    secure: BrvrSpcnK4tMvxnHmRXHATjriHO8DSqZeqRrl5SSFF4Fbfq/TMK3/0Wy6aMe+SfAkCTFBs4RWMoxIi+1HJyOqb0Z9piYAYr7yJXxXGCLwHNm8A6scadPgP9l9gL8PxpXsEo/YX2JlGPchMkDCprzyvaefxkaZdIwE6I9CxOhe0Y=
+deploy:
+  provider: heroku
+  api_key:
+    secure: RmdKoE+scoYBKmnQT/GAgwB+7louKu8ID06wU+8/aOKYM6+N2dM/3+9ycNCwu/dbFobCYPXMiY2glKdekzdcgmxx/VOavIRTemREh7YQnUAEcvjbdKbB+6hIWHg/nM7DY9QbgCDbZzFDNOx0x1EmOO2uQ9Z3NcRV3o31y0YTEmA=
+  app: masuilab-linda-worker
+  on:
+    branch: master
+    repo: masuilab/linda-worker

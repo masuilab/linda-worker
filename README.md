@@ -1,5 +1,7 @@
 # Linda Worker
 
+[![Build Status](https://travis-ci.org/masuilab/linda-worker.svg?branch=master)](https://travis-ci.org/masuilab/linda-worker)
+
 - deploy on Heroku
   - http://masuilab-linda-worker.herokuapp.com
 
@@ -30,3 +32,12 @@ configure with env variable `DEBUG`
     % DEBUG=linda:worker* npm start              # print this app's status
     % DEBUG=linda:worker:light_notify npm start  # print `scripts/light_notify.coffee`
     % DEBUG=* npm start                          # print socket.io/engine.io/linda status
+
+
+## Test
+
+    % npm test
+
+or
+
+    % grunt

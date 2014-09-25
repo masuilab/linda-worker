@@ -4,7 +4,8 @@
   "description": "- deploy on Heroku   - http://masuilab-linda-worker.herokuapp.com",
   "main": "index.js",
   "scripts": {
-    "start": "coffee linda-worker.coffee"
+    "start": "coffee linda-worker.coffee",
+    "test": "grunt test"
   },
   "keywords": [
     "linda"
@@ -20,6 +21,19 @@
     "request": "*",
     "slackbot": "0.0.1",
     "socket.io-client": "^1.1"
+  },
+  "devDependencies": {
+    "coffeelint": "*",
+    "coffee-errors": "*",
+    "grunt": "*",
+    "grunt-cli": "*",
+    "grunt-coffeelint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-notify": "*",
+    "grunt-jsonlint": "*",
+    "grunt-simple-mocha": "*",
+    "mocha": "*",
+    "supertest": "*"
   },
   "repository": {
     "type": "git",
