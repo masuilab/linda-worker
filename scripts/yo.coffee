@@ -1,8 +1,8 @@
-## config Yo API token
+## config Yo API token with ENV var
 # export YO_DELTA="DeltaS112's token"
 # export YO_IOTA="Iota411's token"
 
-request = require 'request'
+Yo = require 'yo-api'
 
 module.exports = (linda) ->
 
@@ -11,12 +11,12 @@ module.exports = (linda) ->
   getToken = (name) ->
     return process.env["YO_#{name.toUpperCase()}"]
 
-  yo = (name, callback) ->
+  yo = (name, callback = ->) ->
     unless token = getToken(name)
-      return
-    request.post "http://api.justyo.co/yoall/", {
-      form: {api_token: token}
-    }, callback
+      return callback 'token not exists'
+    _yo = new Yo(token)
+    _yo.yo_all callback
+
 
   ts = linda.tuplespace config.linda.space
 
@@ -28,7 +28,7 @@ module.exports = (linda) ->
       return if tuple.data.result?
       return unless tuple.data.value?
       linda.debug tuple
-      yo tuple.data.value, (err, res, body) ->
+      yo tuple.data.value, (err, res) ->
         if err
           tuple.data.result = "fail"
         else
