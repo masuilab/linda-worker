@@ -15,10 +15,5 @@
   },
   "temperature_alert": {
     "interval": 1200
-  },
-  "slack": {
-    "team": "masuilab",
-    "channel": "#news",
-    "header": ":feelsgood:"
   }
 }

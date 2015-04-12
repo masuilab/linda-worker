@@ -19,7 +19,6 @@
     "linda": "^1.2",
     "lodash": "*",
     "request": "*",
-    "slackbot": "0.0.1",
     "socket.io-client": "^1.1",
     "yo-api": "^1.0.0"
   },
