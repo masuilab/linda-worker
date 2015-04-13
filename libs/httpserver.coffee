@@ -2,16 +2,17 @@ debug      = require('debug')('linda:worker:httpserver')
 express    = require 'express'
 bodyParser = require 'body-parser'
 
-app = express()
-app.disable 'x-powered-by'
-app.use bodyParser.urlencoded(extended: true)
+router = express()
+router.disable 'x-powered-by'
+router.use bodyParser.urlencoded(extended: true)
 
-http = require('http').Server(app)
+http = require('http').Server(router)
 
-app.get '/', (err, res) ->
+router.get '/', (err, res) ->
   res.end 'linda-worker'
 
 module.exports =
+  router: router
   start: (port) ->
     http.listen port
     debug "start - port:#{port}"
