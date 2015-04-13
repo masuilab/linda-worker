@@ -1,3 +1,5 @@
+'use strict'
+
 LindaClient = require('linda').Client
 socketio    = require 'socket.io-client'
 debug       = require('debug')('linda:worker')
@@ -10,7 +12,6 @@ httpserver = require path.resolve 'libs', 'httpserver'
 config.linda.url ||= process.env.URL
 debug config
 
-
 ## Scripts
 
 scripts.load process.env.SCRIPT or '.+', (err, scripts) ->
@@ -20,9 +21,9 @@ scripts.load process.env.SCRIPT or '.+', (err, scripts) ->
     debug "load script \"#{script.name}\""
     linda = new LindaClient().connect socket
     linda.config = config
+    linda.router = httpserver.router
     linda.debug = require('debug')("linda:worker:#{script.name}")
     script.function(linda)
-
 
   linda = new LindaClient().connect socket
 

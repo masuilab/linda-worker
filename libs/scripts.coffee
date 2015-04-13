@@ -17,7 +17,7 @@ class Scripts
           function: require file.fullpath
 
       callback null, scripts
-      
+
   files: (pattern, callback = ->) ->
     fs.readdir path.resolve("scripts"), (err, files) ->
       if err
@@ -33,5 +33,5 @@ class Scripts
 
       callback null, files
 
-    
+
 module.exports = new Scripts
