@@ -25,6 +25,7 @@ scripts.load process.env.SCRIPT or '.+', (err, scripts) ->
 
 
   linda = new LindaClient().connect socket
+  linda.router = httpserver
 
   linda.io.on 'connect', ->
     debug "socket.io connnect <#{config.linda.url}>"
