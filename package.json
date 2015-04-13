@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "async": "*",
-    "coffee-script": "^1.8",
+    "coffee-script": "^1.9",
     "debug": "*",
     "linda": "^1.2",
     "lodash": "*",
