@@ -7,8 +7,7 @@ module.exports = (linda) ->
 
   notify = (msg, value, tuple_space) ->
     ts = linda.tuplespace config.linda.space
-    ts.write {type: "slack", cmd: "post", value: "#{msg} (#{value})"}
-    ts.write {type: "skype", cmd: "post", value: "#{msg} (#{value})"}
+    ts.write {type: "hubot", cmd: "post", value: "#{msg} (#{value})"}
     ts.write {type: "yo", value: tuple_space.name}
     for ts in tss
       ts.write {type: "say", value: msg}

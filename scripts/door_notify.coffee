@@ -8,8 +8,7 @@ module.exports = (linda) ->
   notify = (msg) ->
     for ts in tss
       ts.write {type: "say", value: msg}
-      ts.write {type: "skype", cmd: "post", value: msg}
-      ts.write {type: "slack", cmd: "post", value: msg}
+      ts.write {type: "hubot", cmd: "post", value: msg}
 
   yo = (room_name) ->
     linda.tuplespace(config.linda.space).write
