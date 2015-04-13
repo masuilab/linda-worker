@@ -19,7 +19,7 @@
     "linda": "^1.2",
     "lodash": "*",
     "request": "*",
-    "socket.io-client": "^1.1",
+    "socket.io-client": "^1.3",
     "yo-api": "^1.0.0"
   },
   "devDependencies": {
