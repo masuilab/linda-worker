@@ -18,3 +18,7 @@ module.exports = (linda) ->
       type: 'door'
       cmd:  'open'
       who:  who
+
+    linda.tuplespace('delta').write
+      type:  'say'
+      value: 'ヨー'
