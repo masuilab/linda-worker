@@ -1,12 +1,13 @@
 {
-  "name": "linda-worker",
+  "name": "masuilab-linda-worker",
   "version": "0.0.0",
-  "description": "- deploy on Heroku   - http://masuilab-linda-worker.herokuapp.com",
-  "main": "index.js",
+  "description": "Linda Worker - deploy on Heroku http://masuilab-linda-worker.herokuapp.com",
+  "main": "bin/linda-worker.coffee",
   "scripts": {
-    "start": "coffee linda-worker.coffee",
+    "start": "coffee bin/linda-worker.coffee",
     "test": "grunt test"
   },
+  "private": true,
   "keywords": [
     "linda"
   ],
@@ -39,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/masuilab/linda-worker.git"
+    "url": "https://github.com/masuilab/linda-worker.git"
   },
   "bugs": {
     "url": "https://github.com/masuilab/linda-worker/issues"

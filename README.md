@@ -17,11 +17,12 @@ put into `scritps` directory.
 
 ### Run All Scripts
 
-    % DEBUG=* npm start
+    % npm start
 
 ### Run Specific Script
 
     % SCRIPT=light-notify npm start
+    % SCRIPT=*notify npm start
 
 
 ## Logs
@@ -36,8 +37,8 @@ configure with env variable `DEBUG`
 
 ## Test
 
+    % npm i grunt-cli -g
+
     % npm test
-
-or
-
+    # or
     % grunt

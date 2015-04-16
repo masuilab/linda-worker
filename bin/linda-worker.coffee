@@ -1,5 +1,8 @@
 'use strict'
 
+unless process.env.DEBUG
+  process.env.DEBUG = 'linda:worker*'
+
 LindaClient = require('linda').Client
 socketio    = require 'socket.io-client'
 debug       = require('debug')('linda:worker')

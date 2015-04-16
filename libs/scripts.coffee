@@ -2,9 +2,12 @@ path = require 'path'
 fs   = require 'fs'
 _    = require 'lodash'
 
+wildcardToRegExp = (wildcardStr) ->
+  return new RegExp wildcardStr.replace /\*/g, '.*'
+
 class Scripts
-  load: (pattern, callback = ->) ->
-    @files pattern, (err, files) ->
+  load: (wildcardStr, callback = ->) ->
+    @findFiles wildcardStr, (err, files) ->
       if err
         callback err
         return
@@ -18,14 +21,14 @@ class Scripts
 
       callback null, scripts
 
-  files: (pattern, callback = ->) ->
+  findFiles: (wildcardStr, callback = ->) ->
     fs.readdir path.resolve("scripts"), (err, files) ->
       if err
         callback err
         return
 
       files = _.chain(files)
-      .filter (file) -> new RegExp("#{pattern}\.coffee$").test file
+      .filter (file) -> wildcardToRegExp("#{wildcardStr}\.coffee$").test file
       .map (file) ->
         fullpath: path.resolve 'scripts', file
         name: file
