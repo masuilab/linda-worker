@@ -1,6 +1,7 @@
 module.exports = (linda) ->
 
   config = linda.config
+  ts = linda.tuplespace config.linda.space
 
   linda.router.get '/yo/door_open_delta', (req, res) ->
     linda.debug req.query
@@ -9,16 +10,18 @@ module.exports = (linda) ->
       return res.status(400).end 'invalid request'
     res.end 'ok'
 
-    linda.tuplespace(config.linda.space).write
+    ts.write
       type:  'hubot'
       cmd:   'post'
       value: "#{who}(ip:#{ip})がYoでドアを開けようとしています"
 
-    linda.tuplespace('delta').write
+    ts.write
       type: 'door'
       cmd:  'open'
+      where:'delta'
       who:  who
 
-    linda.tuplespace('delta').write
+    ts.write
       type:  'say'
       value: 'ヨー'
+      where: 'delta'
