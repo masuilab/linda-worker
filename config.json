@@ -4,14 +4,14 @@
   },
   "linda": {
     "url": "https://linda-server.herokuapp.com",
-    "space": "masuilab",
-    "spaces": {
-      "masuilab": "増井研",
-      "delta": "デルタ",
-      "iota": "イオタ",
-      "tau": "タウ",
-      "shokai": "しょうかいハウス"
-    }
+    "space": "masuilab"
+  },
+  "places": {
+    "masuilab": "増井研",
+    "delta": "デルタ",
+    "iota": "イオタ",
+    "tau": "タウ",
+    "shokai": "しょうかいハウス"
   },
   "temperature_alert": {
     "interval": 1200

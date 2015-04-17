@@ -9,6 +9,7 @@ module.exports = (linda) ->
       return res.status(400).end 'invalid request'
     res.end 'ok'
 
-    linda.tuplespace('shokai').write
+    linda.tuplespace(config.linda.space).write
       type:  'say'
       value: 'ヨー'
+      where: 'shokai'

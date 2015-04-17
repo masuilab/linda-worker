@@ -4,7 +4,7 @@ module.exports = (linda) ->
   ts = linda.tuplespace(config.linda.space)
 
   door_open = (where, who) ->
-    linda.tuplespace(where).write {type: "door", cmd: "open", who: who}
+    ts.write {type: "door", cmd: "open", where: where, who: who}
 
   linda.io.on 'connect', ->
 
