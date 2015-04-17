@@ -8,18 +8,21 @@ module.exports = (linda) ->
 
     res.end 'ok'
 
-    linda.tuplespace(config.linda.space).write
+    ts = linda.tuplespace config.linda.space
+
+    ts.write
       type:  'waiwai'
       query: req.query
       body:  req.body
 
-    linda.tuplespace(config.linda.space).write
+    ts.write
       type: 'hubot'
       cmd:  'post'
       value:'デルタ氏「わいわい」'
       room: 'news'
 
-    for tsName,nickname of config.linda.spaces
-      linda.tuplespace(tsName).write
+    for where, nickname of config.places
+      ts.write
         type: 'say'
         value: 'わいわい'
+        where: where
