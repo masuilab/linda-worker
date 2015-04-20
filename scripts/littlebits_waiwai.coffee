@@ -2,6 +2,8 @@ module.exports = (linda) ->
 
   config = linda.config
 
+  last_at = 0
+
   linda.router.post '/littlebits/waiwai', (req, res) ->
 
     linda.debug 'callback received'
@@ -33,11 +35,14 @@ module.exports = (linda) ->
     return if percent < 80  # 静かな時は通知しない
 
     ts.write
-      type: 'hubot'
-      cmd:  'post'
-      value:'デルタ氏「わいわい」'
-      room: 'news'
-
-    ts.write
       type: 'say'
       value: 'わいわい'
+
+    if config.waiwai.hubot_interval < (Date.now() - last_at)/60000
+      ts.write
+        type: 'hubot'
+        cmd:  'post'
+        value:'デルタ氏「わいわい」'
+        room: 'news'
+
+    last_at = Date.now()
