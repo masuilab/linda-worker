@@ -5,6 +5,7 @@ module.exports = (linda) ->
   linda.router.post '/littlebits/waiwai', (req, res) ->
 
     linda.debug 'callback received'
+    linda.debug JSON.stringify req.body
 
     res.end 'ok'
 
