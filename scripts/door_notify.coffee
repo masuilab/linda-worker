@@ -9,11 +9,9 @@ module.exports = (linda) ->
       cmd: "post"
       value: msg
 
-    for where,nickname of config.places
-      ts.write
-        type: "say"
-        value: msg
-        where: where
+    ts.write
+      type: "say"
+      value: msg
 
   yo = (room_name) ->
     ts.write

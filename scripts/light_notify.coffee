@@ -15,11 +15,9 @@ module.exports = (linda) ->
       type: "yo"
       value: where
 
-    for where,nickname of config.places
-      ts.write
-        type: "say"
-        value: msg
-        where: where
+    ts.write
+      type: "say"
+      value: msg
 
   linda.io.on 'connect', ->
 

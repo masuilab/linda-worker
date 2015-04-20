@@ -38,8 +38,6 @@ module.exports = (linda) ->
       value:'デルタ氏「わいわい」'
       room: 'news'
 
-    for where, nickname of config.places
-      ts.write
-        type: 'say'
-        value: 'わいわい'
-        where: where
+    ts.write
+      type: 'say'
+      value: 'わいわい'
