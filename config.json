@@ -13,6 +13,9 @@
     "tau": "タウ",
     "shokai": "しょうかいハウス"
   },
+  "waiwai": {
+    "bit_id": "00e04c1eec66"
+  },
   "temperature_alert": {
     "interval": 1200
   }
