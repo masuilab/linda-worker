@@ -1,4 +1,6 @@
-# Linda Worker
+# Linda Worker Masuilab
+
+generated with [generator-linda](https://npmjs.org/package/generator-linda) v0.2.6
 
 [![Build Status](https://travis-ci.org/masuilab/linda-worker.svg?branch=master)](https://travis-ci.org/masuilab/linda-worker)
 
