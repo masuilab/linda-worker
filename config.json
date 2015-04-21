@@ -19,5 +19,22 @@
   },
   "temperature_alert": {
     "interval": 1200
+  },
+  "yo": {
+    "users": [
+      "SHOKAI",
+      "HIROAKISATAKE",
+      "AMIKANZAKI",
+      "GETA6",
+      "KEROXP",
+      "MASUI",
+      "NAPO0703",
+      "NEKOBATO",
+      "NIKEZONO",
+      "TAKUMIBABA",
+      "YAMAPURGIS",
+      "YTANAKA",
+      "ZAKUNI"
+    ]
   }
 }
