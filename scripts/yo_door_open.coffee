@@ -1,3 +1,8 @@
+# Yoでドアを開ける
+# ENV: YO_DOOR_TOKEN
+
+process.env.YO_DOOR_TOKEN ||= 'うどん居酒屋かずどん'
+
 module.exports = (linda) ->
 
   config = linda.config
@@ -14,6 +19,13 @@ module.exports = (linda) ->
         type:  'hubot'
         cmd:   'post'
         value: "不正なユーザー #{who}(ip#{ip})がYoでドアを開けようとしています"
+      return
+    if req.query.token isnt process.env.YO_DOOR_TOKEN
+      res.status(400).end "bad token"
+      ts.write
+        type:  'hubot'
+        cmd:   'post'
+        value: "#{who}(ip#{ip})が不正なYo token\"#{req.query.token}\"でドアを開けようとしています"
       return
 
     res.end 'ok'

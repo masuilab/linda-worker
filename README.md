@@ -10,6 +10,11 @@ generated with [generator-linda](https://npmjs.org/package/generator-linda) v0.2
 
 ![screenshot](http://shokai.org/archive/file/f0b5abc276612c61f427b249a035ebfb.png)
 
+## Config
+
+    % heroku config:set YO_DOOR_TOKEN=token
+
+
 ## Scripts
 
 put into `scritps` directory.
