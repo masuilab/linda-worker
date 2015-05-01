@@ -29,6 +29,7 @@ module.exports = (linda) ->
 
     ts.write
       type:  'waiwai'
+      where: 'delta'
       percent: percent
       body:  req.body
 
@@ -42,7 +43,7 @@ module.exports = (linda) ->
       ts.write
         type: 'hubot'
         cmd:  'post'
-        value:'デルタ氏「わいわい」'
+        value:"delta氏「わいわい」(#{percent}%)"
         room: 'news'
 
     last_at = Date.now()
