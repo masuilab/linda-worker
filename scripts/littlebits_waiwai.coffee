@@ -33,17 +33,17 @@ module.exports = (linda) ->
       percent: percent
       body:  req.body
 
-    return if percent < 80  # 静かな時は通知しない
+    if percent > 90 or
+       config.waiwai.hubot_interval < (Date.now() - last_at)/60000
 
-    ts.write
-      type: 'say'
-      value: 'わいわい'
+      ts.write
+        type: 'say'
+        value: 'わいわい'
 
-    if config.waiwai.hubot_interval < (Date.now() - last_at)/60000
       ts.write
         type: 'hubot'
         cmd:  'post'
         value:"delta氏「わいわい」(#{percent}%)"
         room: 'news'
 
-    last_at = Date.now()
+      last_at = Date.now()
