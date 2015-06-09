@@ -2,7 +2,7 @@
 
 generated with [generator-linda](https://npmjs.org/package/generator-linda) v0.2.6
 
-[![Build Status](https://travis-ci.org/masuilab/linda-worker.svg?branch=master)](https://travis-ci.org/masuilab/linda-worker)
+[![Circle CI](https://circleci.com/gh/masuilab/linda-worker.svg?style=svg)](https://circleci.com/gh/masuilab/linda-worker)
 
 - deploy on Heroku
   - http://masuilab-linda-worker.herokuapp.com
