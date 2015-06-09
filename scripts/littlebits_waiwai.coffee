@@ -33,7 +33,7 @@ module.exports = (linda) ->
       percent: percent
       body:  req.body
 
-    if percent > 90 or
+    if percent > 90 and
        config.waiwai.hubot_interval < (Date.now() - last_at)/60000
 
       ts.write
