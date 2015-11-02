@@ -15,7 +15,7 @@
   },
   "waiwai": {
     "bit_id": "00e04c1eec66",
-    "hubot_interval": 10
+    "hubot_interval": 30
   },
   "temperature_alert": {
     "interval": 1200
