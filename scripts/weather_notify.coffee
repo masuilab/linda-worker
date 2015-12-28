@@ -30,3 +30,4 @@ module.exports = (linda) ->
       if tuple.data.observation > 0
         if tuple.data.forecast is 0
           notify "#{place_name}でもうすぐ雨が止みます"
+          return
