@@ -23,8 +23,8 @@ module.exports = (linda) ->
         return reject err if err
         return resolve JSON.parse body
 
-  write_weather_tuples = ->
-    for where, latlon of config.weather.coordinates
+  write_rain_tuples = ->
+    for where, latlon of config.rain.coordinates
       do (where, latlon) ->
         get_weather latlon
         .then (res) ->
@@ -41,10 +41,10 @@ module.exports = (linda) ->
               forecast: forecast.Rainfall
               where: where
             linda.debug tuple
-            ts.write tuple, expire: config.weather.interval
+            ts.write tuple, expire: config.rain.interval
         .catch (err) ->
           linda.debug err
 
   linda.io.once 'connect', ->
-    write_weather_tuples()
-    setInterval write_weather_tuples, config.weather.interval * 1000
+    write_rain_tuples()
+    setInterval write_rain_tuples, config.rain.interval * 1000

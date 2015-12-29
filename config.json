@@ -38,7 +38,7 @@
       "HYKWTAKUMIN"
     ]
   },
-  "weather": {
+  "rain": {
     "interval": 600,
     "coordinates": {
       "sfc": "139.4240601,35.385573",
