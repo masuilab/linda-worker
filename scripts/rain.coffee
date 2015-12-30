@@ -28,20 +28,19 @@ module.exports = (linda) ->
       do (where, latlon) ->
         get_weather latlon
         .then (res) ->
-          for feature in res.Feature
-            data = feature.Property.WeatherList.Weather
-            observation = _.find data, (i) -> i.Type is 'observation' and typeof i.Rainfall is 'number'
-            forecast = _.chain(data)
-              .filter (i) -> i.Type is 'forecast' and typeof i.Rainfall is 'number'
-              .min (i) -> i.Date
-              .value()
-            tuple =
-              type: 'rain'
-              observation: observation.Rainfall
-              forecast: forecast.Rainfall
-              where: where
-            linda.debug tuple
-            ts.write tuple, expire: config.rain.interval
+          data = res.Feature[0].Property.WeatherList.Weather
+          observation = _.find data, (i) -> i.Type is 'observation' and typeof i.Rainfall is 'number'
+          forecast = _.chain(data)
+            .filter (i) -> i.Type is 'forecast' and typeof i.Rainfall is 'number'
+            .min (i) -> i.Date
+            .value()
+          tuple =
+            type: 'rain'
+            observation: observation.Rainfall
+            forecast: forecast.Rainfall
+            where: where
+          linda.debug tuple
+          ts.write tuple, expire: config.rain.interval
         .catch (err) ->
           linda.debug err
 
