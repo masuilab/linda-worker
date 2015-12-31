@@ -7,6 +7,8 @@ module.exports = (linda) ->
   ts = linda.tuplespace config.linda.space
 
   notify = (msg) ->
+    linda.debug msg
+
     ts.write
       type: "hubot"
       cmd: "post"
