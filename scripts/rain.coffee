@@ -10,39 +10,46 @@ module.exports = (linda) ->
   config = linda.config
   ts = linda.tuplespace config.linda.space
 
-  get_weather = (latlon) ->
+  get_weather = (coordinates) ->
     return new Promise (resolve, reject) ->
       linda.debug "getting yahoo weather API"
       request
         url: "http://weather.olp.yahooapis.jp/v1/place"
         qs:
           appid: process.env.WEATHER_APPID
-          coordinates: latlon
+          coordinates: coordinates
           output: "json"
       , (err, res, body) ->
         return reject err if err
         return resolve JSON.parse body
 
   write_rain_tuples = ->
-    for where, latlon of config.rain.coordinates
-      do (where, latlon) ->
-        get_weather latlon
-        .then (res) ->
-          data = res.Feature[0].Property.WeatherList.Weather
-          observation = _.find data, (i) -> i.Type is 'observation' and typeof i.Rainfall is 'number'
-          forecast = _.chain(data)
-            .filter (i) -> i.Type is 'forecast' and typeof i.Rainfall is 'number'
-            .min (i) -> i.Date
-            .value()
-          tuple =
-            type: 'rain'
-            observation: observation.Rainfall
-            forecast: forecast.Rainfall
-            where: where
-          linda.debug tuple
-          ts.write tuple, expire: config.rain.interval
-        .catch (err) ->
-          linda.debug err
+    get_weather _.values(config.rain.coordinates).join(' ')
+    .then (res) ->
+      for feature in res.Feature
+        [lon, lat] = feature.Geometry.Coordinates.split(',').map((i) -> i - 0)
+        where = _.chain config.rain.coordinates
+          .pairs()
+          .min (i) ->
+            [lon2, lat2] = i[1].split(',')
+            return Math.abs(lon-lon2) + Math.abs(lat-lat2)
+          .first()
+          .value()
+        data = feature.Property.WeatherList.Weather
+        observation = _.find data, (i) -> i.Type is 'observation' and typeof i.Rainfall is 'number'
+        forecast = _.chain(data)
+          .filter (i) -> i.Type is 'forecast' and typeof i.Rainfall is 'number'
+          .min (i) -> i.Date
+          .value()
+        tuple =
+          type: 'rain'
+          observation: observation.Rainfall
+          forecast: forecast.Rainfall
+          where: where
+        linda.debug tuple
+        ts.write tuple, expire: config.rain.interval
+    .catch (err) ->
+      linda.debug err
 
   linda.io.once 'connect', ->
     write_rain_tuples()
