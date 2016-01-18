@@ -3,9 +3,13 @@
 # write tuple - { type: 'rain', observation: 0, forecast: 0, where: 'sfc' }
 
 {Yolp} = require 'weather-yahoo-jp'
-yolp = new Yolp(process.env.WEATHER_APPID)
 
 module.exports = (linda) ->
+
+  try
+    yolp = new Yolp(process.env.WEATHER_APPID)
+  catch err
+    linda.debug err
 
   config = linda.config
   ts = linda.tuplespace config.linda.space
