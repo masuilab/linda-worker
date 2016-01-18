@@ -31,5 +31,7 @@ module.exports = (linda) ->
           linda.debug err
 
   linda.io.once 'connect', ->
-    write_rain_tuples()
-    setInterval write_rain_tuples, config.rain.interval * 1000
+    setTimeout ->
+      write_rain_tuples()
+      setInterval write_rain_tuples, config.rain.interval * 1000
+    , 10000 # 温度通知と重なるのでずらす
