@@ -7,6 +7,10 @@
     "start": "coffee bin/linda-worker.coffee",
     "test": "grunt test"
   },
+  "engines": {
+    "node": "5.4.x",
+    "npm": "3.x"
+  },
   "private": true,
   "keywords": [
     "linda"
