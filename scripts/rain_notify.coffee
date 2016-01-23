@@ -6,7 +6,7 @@ module.exports = (linda) ->
   config = linda.config
   ts = linda.tuplespace config.linda.space
 
-  notify = (msg, emoji) ->
+  notify = (msg, where, emoji) ->
     linda.debug msg
 
     ts.write
@@ -17,6 +17,7 @@ module.exports = (linda) ->
     ts.write
       type: "say"
       value: msg
+      where: where
 
   linda.io.on 'connect', ->
     ts.watch
@@ -27,9 +28,10 @@ module.exports = (linda) ->
       place_name = config.places[tuple.data.where] or tuple.data.where
       if tuple.data.observation is 0
         if tuple.data.forecast > 0
-          notify "#{place_name}でもうすぐ雨が#{tuple.data.forecast}降ります", ":umbrella:"
+          notify "#{place_name}でもうすぐ雨が#{tuple.data.forecast}降
+    ります", tuple.data.where, ":umbrella:"
           return
       if tuple.data.observation > 0
         if tuple.data.forecast is 0
-          notify "#{place_name}でもうすぐ雨が止みます", ":sunny:"
+          notify "#{place_name}でもうすぐ雨が止みます", tuple.data.where, ":sunny:"
           return
