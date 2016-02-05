@@ -12,10 +12,6 @@ module.exports = (linda) ->
       value: "#{msg} (#{value})"
 
     ts.write
-      type: "yo"
-      value: where
-
-    ts.write
       type: "say"
       value: msg
 
@@ -38,6 +34,9 @@ module.exports = (linda) ->
           if tuple.data.value / (last_value+1) > 3
             linda.debug msg = "#{place_name} で電気がつきました"
             notify msg, tuple.data.value, where
+            ts.write
+              type: "yo"
+              value: where
         else
           if last_value / (tuple.data.value+1) > 3
             linda.debug msg = "#{place_name} で電気が消えました"
