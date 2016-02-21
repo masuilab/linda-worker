@@ -19,6 +19,8 @@ module.exports = (linda) ->
     yolp
       .getWeather
         coordinates: config.rain.coordinates
+        map:
+          z: 12
       .then (res) ->
         for where, weather of res
           tuple =
