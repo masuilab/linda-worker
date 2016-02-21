@@ -25,6 +25,7 @@ module.exports = (linda) ->
             type: 'rain'
             observation: weather.observation.rain
             forecast: weather.forecast[0].rain
+            map: weather.map
             where: where
           linda.debug tuple
           ts.write tuple, expire: config.rain.interval
