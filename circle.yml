@@ -1,11 +1,6 @@
 machine:
   node:
     version: 5.4
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: masuilab-linda-worker
 notify:
   webhooks:
     - url: https://masuilab-hubot2.herokuapp.com/circleci-webhook?room=linda
