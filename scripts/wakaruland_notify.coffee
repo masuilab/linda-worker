@@ -11,7 +11,7 @@ module.exports = (linda) ->
     ts.write
       type: "hubot"
       cmd: "post"
-      value: "#{who}「#{reaction}」\n#{image_url(reaction)}"
+      value: "#{who}「#{reaction}」\n#{image_url(reaction)}##{Date.now()}"
 
     ts.write
       type: "say"
