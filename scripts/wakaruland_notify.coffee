@@ -17,3 +17,4 @@ module.exports = (linda) ->
     ts.write
       type: "say"
       value: "#{reaction} land"
+      where: "delta"
