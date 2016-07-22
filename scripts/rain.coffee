@@ -9,7 +9,7 @@ module.exports = (linda) ->
   try
     yolp = new Yolp(process.env.WEATHER_APPID)
   catch err
-    linda.debug err
+    return linda.debug err
 
   config = linda.config
   ts = linda.tuplespace config.linda.space
