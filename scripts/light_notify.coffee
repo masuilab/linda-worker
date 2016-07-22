@@ -37,7 +37,17 @@ module.exports = (linda) ->
             ts.write
               type: "yo"
               value: where
+            ts.write
+              type: "light"
+              value: true
+              where: where
+            , expire: 60*60*24
         else
           if last_value / (tuple.data.value+1) > 3
             linda.debug msg = "#{place_name} で電気が消えました"
             notify msg, tuple.data.value, where
+            ts.write
+              type: "light"
+              value: false
+              where: where
+            , expire: 60*60*24
